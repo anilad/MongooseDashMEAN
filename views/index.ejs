@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongoose Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fido's Fiesta!</h1>
+        <% if(dogs.length==0){ %>
+            <div class="container">
+                <p>No dogs attending Fido's Fiesta yet |
+                    <a href="/dogs/new">Invite Fido's puppy pals!</a>
+                </p>
+            </div>
+        <% }
+        else if(dogs.length>0){%>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Breed</th>
+                            <th>Age</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var idx in dogs) {%>
+                            <tr>
+                                <th>
+                                    <%= idx %>
+                                </th>
+                                <th>
+                                    <a href="/dogs/<%=dogs[idx]._id%>"><%= dogs[idx].name %></a>
+                                </th>
+                                <th>
+                                    <%= dogs[idx].breed %>
+                                </th>
+                                <th>
+                                    <%= dogs[idx].age %>
+                                </th>
+                                <th>
+                                    <%= dogs[idx].color %>
+                                </th>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <p>Don't see your puppy pal? |
+                    <a href="/dogs/new">Invite your puppy pal!</a>
+                </p>
+                <% } %>
+    </div>
+</body>
+
+</html>
